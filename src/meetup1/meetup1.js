@@ -23,22 +23,25 @@ const Left = (x) => ({
   map: (fn) => Left(x),
   inspect: () => `Left(${x})`,
   fold: (f, g) => f(x),
+  chain: (fn) => Left(x),
 });
 
 const Right = (x) => ({
   map: (fn) => Right(fn(x)),
   inspect: () => `Right(${x})`,
   fold: (f, g) => g(x),
+  chain: (fn) => fn(x),
 });
 
-const isEmail = (x) => x.includes("@") ? Left(x) : Right(x);
-const isGmail = (x) => x.includes("gmail") ? Left(x) : Right(x);
+const isEmail = (x) => x.includes("@") ? Right(x) : Left(x);
+const isGmail = (x) => x.includes("gmail") ? Right(x) : Left(x);
 
 const result2 = Box("some@gmail.com")
   .chain(isEmail)
+  .chain(isGmail)
   .fold(
-    (x) => `Is valid email`,
-    (x) => "Is not valid"
+    (x) => `Is not valid`,
+    (x) => "Is valid email"
   );
 
 console.log(result2);
