@@ -1,5 +1,6 @@
 {
   "name": "fp-meetup",
+  "type": "module",
   "version": "1.0.0",
   "description": "Functional programming meetup examples",
   "main": "index.js",
