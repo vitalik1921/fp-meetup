@@ -20,4 +20,12 @@ export const Right = (x) => ({
   chain: (fn) => fn(x),
 });
 
+export const tryCatch = (f) => {
+  try {
+    return Right(f());
+  } catch (e) {
+    return Left(e);
+  }
+};
+
 export { default as Task } from "data.task";
