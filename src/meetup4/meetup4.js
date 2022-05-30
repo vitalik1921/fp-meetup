@@ -45,9 +45,9 @@ const getOrdersByName = (userName) => {
 };
 
 const getUserLargestOrder = (userName) => {
-  return getOrdersByName(userName).map((orders) =>
+  return Box((orders) =>
     orders.reduce((a, b) => (a.total > b.total ? a : b))
-  );
+  ).ap(getOrdersByName(userName));
 };
 
 getOrdersByName("Jane").fork(console.error, console.log);
