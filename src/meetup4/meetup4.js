@@ -1,4 +1,4 @@
-import { Task, Box } from "../common/boxes.js";
+import { Task, Box, tryCatch } from "../common/boxes.js";
 
 const users = [
   { id: 1, name: "John", age: 20 },
