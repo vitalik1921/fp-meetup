@@ -37,7 +37,7 @@ const fetchOrders = fetchAuthorized("orders");
 const getOrdersByName = (name) => {
   return fetchUsers()
     .map((users) => users.find((user) => user.name === name))
-    .chain((user) =>
+    .chain((user) => // flatMap
       fetchOrders().map((orders) =>
         orders.filter((order) => order.userId === user.id)
       )
